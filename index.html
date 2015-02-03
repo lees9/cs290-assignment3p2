@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CS290 Assignment 3 p2</title>
+	<script type="text/javascript">
+	
+		function gistObj(description, url){
+			this.description = description;
+			this.url = url;
+		}
+		
+		function getGist() {
+			console.log("SUCCESS!");
+			var xmlHTTP = new XMLHttpRequest();
+			
+			xmlHTTP.onload = gistLoad.bind(null, xmlHTTP);
+            xmlHTTP.open("GET", 'https://api.github.com/gists/public?page=1&per_page=30', true);
+            xmlHTTP.send();
+		};
+		
+		function gistLoad(xmlHTTP) {
+//			console.log(xmlHTTP.responseText);
+			var gists = JSON.parse(xmlHTTP.responseText);
+			
+			var htmlSnippet = '';
+			
+			for (var i = 0; i < gists.length; i++){
+				var gist = [];
+				gist[i] = new gistObj(gists[i].description, gists[i].url);
+				console.log(gist[i].url + '\n');
+				//var entry = '<a>' + gist.description + '</a>\n';
+				htmlSnippet += '<p>' + gist[i].description + '</p>\n'
+			}
+			
+/* 			 for (var i = 0; i < gists.length; i++) {
+				var gist = gists[i];
+				var entry = '<p>' + gist.description + '</p>\n';
+				htmlSnippet += entry;
+				
+			} */
+			updateGistList(htmlSnippet);
+		}
+		
+		function updateGistList(htmlSnippet) {
+			document.getElementById("gistList").innerHTML = htmlSnippet;
+		}
+
+	</script>
+</head>
+<body>
+    <h1>CS290 Assignment 3 p2</h1>
+    <h2>Ajax Assignment</h2>
+
+	
+	
+	<input type="submit" name="submitbutton" value="Search" onclick="getGist()"><br><br>
+		<h2>Favorite Gists</h2>
+		<div id="favList"></div>
+		<h2>Search Results</h2>
+		<div id="gistList"></div>
+
+</body>
+</html>

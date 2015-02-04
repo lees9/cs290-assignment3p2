@@ -39,11 +39,13 @@
 				var strChk = '';
 				strChk = gists[i].description;
 				urlChk = gists[i].url;
-				console.log(strChk + '\n');
+				langChk = gists[i].language;
+				//console.log(strChk + '\n');
+				console.log(langChk + '\n');
 					if (isEmpty(strChk) == true){
 						strChk = 'Description Not Available';
 					}
-			
+
 				var gist = [];
 				gist[i] = new gistObj(strChk, urlChk);
 				
@@ -53,7 +55,7 @@
 				a.href = gist[i].url;
 				var b = document.createElement('li');
 				b.appendChild(a);
-				document.getElementById('gistList').insertBefore(b, b[0]);
+				document.getElementById('gistList').appendChild(b);
 			}
 		}
 		

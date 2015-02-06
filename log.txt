@@ -1,0 +1,24 @@
+
+Start: Thu, 5 Feb 2015 23:50:42 -0800
+End: Thu, 5 Feb 2015 23:52:42 -0800
+Tasks: Last second changes
+
+Start: Thu, 5 Feb 2015 22:49:44 -0800
+End: Thu, 5 Feb 2015 23:49:44 -0800
+Tasks: FINISH! cleaned up code, deleted unneeded code, and added comments
+
+Start: Wed, 4 Feb 2015 10:00:00 -0800
+End: Thu, 5 Feb 2015 23:09:37 -0800
+Tasks: completed assignment need to add comments and update log
+
+Start: Tue, 3 Feb 2015 16:00:00 -0800
+End: Tue, 3 Feb 2015 18:53:12 -0800
+Tasks: reset git, trying to get it to replace old pages after new search
+
+Start: Tue, 3 Feb 2015 10:41:28 -0800
+End: Tue, 3 Feb 2015 15:41:28 -0800
+Tasks: got it to show descriptions as links and to get more than 1 page at a tim
+
+Start: Sun, 2 Feb 2015 12:20:00 -800
+End: Mon, 2 Feb 2015 18:20:51 -0800
+Tasks: Decided to work on assignment in 1 file then move the <script> to script.

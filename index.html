@@ -3,79 +3,17 @@
 <head>
     <meta charset="utf-8">
     <title>CS290 Assignment 3 p2</title>
-	<script type="text/javascript">
-		
-		//create gistObj
-		function gistObj(description, url){
-			this.description = description;
-			this.url = url;
-		}
-		
-		//get gists from github
-		function getGist() {
-			console.log("SUCCESS!");
-			
-			var baseURL = 'https://api.github.com/gists/public?';
-			var endURL = '&per_page=30';
-			var pageNums = document.getElementById('pageNums').value;
-			console.log(pageNums);
-			for (i = 1; i <= pageNums; i++){
-			
-			
-				var xmlHTTP = new XMLHttpRequest();
-				xmlHTTP.onload = gistLoad.bind(null, xmlHTTP);
-				var compURL = baseURL + 'page=' + i + endURL;
-				xmlHTTP.open("GET", compURL, true);
-				xmlHTTP.send();
-				console.log(i);
-			}
-		};
-		
-		//convert the gists to javascript objects
-		function gistLoad(xmlHTTP) {
-			//console.log(xmlHTTP.responseText);
-			var gists = JSON.parse(xmlHTTP.responseText);
-			for (var i = 0; i < gists.length; i++){
-				var strChk = '';
-				strChk = gists[i].description;
-				urlChk = gists[i].url;
-				langChk = gists[i].language;
-				//console.log(strChk + '\n');
-				console.log(langChk + '\n');
-					if (isEmpty(strChk) == true){
-						strChk = 'Description Not Available';
-					}
-
-				var gist = [];
-				gist[i] = new gistObj(strChk, urlChk);
-				
-				var a = document.createElement('a');
-				var weblink = document.createTextNode(gist[i].description);
-				a.appendChild(weblink);
-				a.href = gist[i].url;
-				var b = document.createElement('li');
-				b.appendChild(a);
-				document.getElementById('gistList').appendChild(b);
-			}
-		}
-		
-	function isEmpty(str) {
-		if (!str){
-			return true;
-		}
-		else if (str === ""){
-			return true;
-		}
-		return false;
-	}	
-	
-	</script>
+	<script src='script.js'></script>
 </head>
 <body>
     <h1>CS290 Assignment 3 p2</h1>
     <h2>Ajax Assignment</h2>
 	
-	<input type="number" id="pageNums" min=1 max=5 required value="0"> Number of Pages to Request (30 per page, 5 pages max)</br></br>
+	<input type="number" id="pageNums" min=1 max=5 required value="0"> Number of Pages to Request (30 per page, 5 pages max)</input></br></br>
+	<input type="checkbox" name="langChk" value="Python">Python</input>
+	<input type="checkbox" name="langChk" value="Javascript">Javascript</input>
+	<input type="checkbox" name="langChk" value="JSON">JSON</input>
+	<input type="checkbox" name="langChk" value="SQL">SQL</input><br><br>
 	
 	<input type="submit" name="submitbutton" value="Search" onclick="getGist()"><br><br>
 		<h2>Favorite Gists</h2>
